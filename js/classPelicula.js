@@ -2,10 +2,12 @@ export default class Pelicula {
   #titulo;
   #director;
   #anioEstreno;
-  constructor(titulo, director, anioEstreno) {
+  #poster;
+  constructor(titulo, director, anioEstreno, poster) {
     this.#titulo = titulo;
     this.#director = director;
     this.#anioEstreno = anioEstreno;
+    this.#poster = poster;
   }
   // Getters
   get titulo() {
@@ -18,6 +20,9 @@ export default class Pelicula {
 
   get anioEstreno() {
     return this.#anioEstreno;
+  }
+  get poster() {
+    return this.#poster;
   }
 
   // Setters
@@ -32,6 +37,9 @@ export default class Pelicula {
   set anioEstreno(nuevoAnioEstreno) {
     this.#anioEstreno = nuevoAnioEstreno;
   }
+  set poster(nuevoPoster) {
+    this.#poster = nuevoPoster;
+  }
 
   //metodo para stringify
   toJSON() {
@@ -39,6 +47,7 @@ export default class Pelicula {
       titulo: this.titulo,
       director: this.director,
       anioEstreno: this.anioEstreno,
+      poster: this.poster,
     };
   }
 }
