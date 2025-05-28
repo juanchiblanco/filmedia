@@ -9,7 +9,7 @@ export default class Pelicula {
     this.#anioEstreno = anioEstreno;
     this.#poster = poster;
   }
-  // Getters
+
   get titulo() {
     return this.#titulo;
   }
@@ -25,7 +25,6 @@ export default class Pelicula {
     return this.#poster;
   }
 
-  // Setters
   set titulo(nuevoTitulo) {
     this.#titulo = nuevoTitulo;
   }
@@ -41,7 +40,6 @@ export default class Pelicula {
     this.#poster = nuevoPoster;
   }
 
-  //metodo para stringify
   toJSON() {
     return {
       titulo: this.titulo,
