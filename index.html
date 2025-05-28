@@ -61,8 +61,6 @@
         <button
           class="btn btn-success"
           id="btnAgregar"
-          data-bs-toggle="modal"
-          data-bs-target="#modalContacto"
         >
           Agregar película
         </button>
@@ -99,7 +97,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalContactoLabel">
-              Administrar Contacto
+              Agregar película
             </h1>
             <button
               type="button"
@@ -109,7 +107,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form class="formPelicula">
               <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
                 <input
@@ -152,12 +150,12 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="imagen" class="form-label">Poster</label>
+                <label for="poster" class="form-label">Poster</label>
                 <div class="input-group">
                   <input
                     type="file"
                     class="form-control"
-                    id="inputGroupFile04"
+                    id="poster"
                     aria-describedby="inputGroupFileAddon04"
                     aria-label="Upload"
                   />
