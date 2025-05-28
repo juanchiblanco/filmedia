@@ -37,8 +37,8 @@ const limpiarForm = () => {
 const cardPeliculaAgregada = (nuevaPelicula) => {
   cardPeliculas.innerHTML = `<article class="col-12 col-md-4 col-lg-3" id="cardPelicula">
           <div class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
+            <img src="./assets/${nuevaPelicula.poster}" class="card-img-top" alt="${nuevaPelicula.titulo}, ${nuevaPelicula.director} (${nuevaPelicula.anioEstreno})" />
+            <div class="card-body bg-dark-subtle">
               <h5 class="card-title">${nuevaPelicula.titulo}</h5>
               <p class="card-text">${nuevaPelicula.director} (${nuevaPelicula.anioEstreno})</p>
               <div class="d-flex justify-content-between gap-2">
@@ -55,6 +55,12 @@ const cardPeliculaAgregada = (nuevaPelicula) => {
         </article>`;
 };
 
+const cargarDatosTabla = () => {
+  if (cartelera.length !== 0) {
+    cartelera.map((nuevaPelicula) => cardPeliculaAgregada(nuevaPelicula));
+  }
+};
+
 const btnAgregar = document.querySelector("#btnAgregar");
 const inputTitulo = document.querySelector("#titulo");
 const inputDirector = document.querySelector("#director");
@@ -69,3 +75,5 @@ formularioPelicula.addEventListener("submit", (e) => {
   e.preventDefault();
   agregarPelicula();
 });
+
+cargarDatosTabla();
