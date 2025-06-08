@@ -9,7 +9,8 @@ const agregarPelicula = () => {
   const nuevaPelicula = new Pelicula(
     inputTitulo.value,
     inputDirector.value,
-    inputAnioEstreno.value
+    inputAnioEstreno.value,
+    inputPoster.value
   );
   cartelera.push(nuevaPelicula);
   guardarLocalStorage();
@@ -34,7 +35,7 @@ const limpiarForm = () => {
 const cardPeliculaAgregada = (nuevaPelicula) => {
   cardPeliculas.innerHTML += `<article class="col-12 col-md-4 col-lg-3" id="cardPelicula">
           <div class="card" style="width: 18rem">
-            <img src="./assets/${nuevaPelicula.poster}" class="card-img-top" alt="${nuevaPelicula.titulo}, ${nuevaPelicula.director} (${nuevaPelicula.anioEstreno})" />
+            <img src="${nuevaPelicula.poster}" class="card-img-top h-100" alt="${nuevaPelicula.titulo}, ${nuevaPelicula.director} (${nuevaPelicula.anioEstreno})" />
             <div class="card-body bg-dark-subtle">
               <h5 class="card-title">${nuevaPelicula.titulo}</h5>
               <p class="card-text">${nuevaPelicula.director} (${nuevaPelicula.anioEstreno})</p>
@@ -64,7 +65,6 @@ window.eliminarPelicula = (id) => {
     cancelButtonText: "Salir",
   }).then((result) => {
     if (result.isConfirmed) {
-      //buscar y borrar del array
       const posicionPeliculaBuscada = cartelera.findIndex(
         (pelicula) => pelicula.id === id
       );
