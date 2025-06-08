@@ -1,14 +1,20 @@
 export default class Pelicula {
+  #id
   #titulo;
   #director;
   #anioEstreno;
   #poster;
   constructor(titulo, director, anioEstreno, poster) {
+    this.#id = crypto.randomUUID();
     this.#titulo = titulo;
     this.#director = director;
     this.#anioEstreno = anioEstreno;
     this.#poster = poster;
   }
+
+  get id() {
+        return this.#id;
+    }
 
   get titulo() {
     return this.#titulo;
@@ -42,6 +48,7 @@ export default class Pelicula {
 
   toJSON() {
     return {
+      id: this.id,
       titulo: this.titulo,
       director: this.director,
       anioEstreno: this.anioEstreno,
