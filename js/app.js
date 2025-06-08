@@ -148,6 +148,7 @@ formularioPelicula.addEventListener("submit", (e) => {
     e.preventDefault();
     agregarPelicula();
   } else {
+    e.preventDefault();
     editarPelicula();
   }
 });
