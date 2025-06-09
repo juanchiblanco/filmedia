@@ -52,7 +52,7 @@ const cardPeliculaAgregada = (nuevaPelicula) => {
                 >
                   Borrar
                 </button>
-                <button class="btn btn-info w-100">Ver</button>
+                <button class="btn btn-info w-100" onclick="verPelicula('${nuevaPelicula.id}')">Ver</button>
               </div>
             </div>
           </div>
@@ -133,6 +133,10 @@ const editarPelicula = () => {
       icon: "success",
     });
   }
+};
+
+window.verPelicula = (id) => {
+  window.location.href = `./pages/detallePelicula.html?id=${id}`;
 };
 
 function validarCantidadCaracteres(input, min, max) {
