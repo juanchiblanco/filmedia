@@ -6,22 +6,24 @@ const abrirModal = () => {
 };
 
 const agregarPelicula = () => {
-  const nuevaPelicula = new Pelicula(
-    inputTitulo.value,
-    inputDirector.value,
-    inputAnioEstreno.value,
-    inputPoster.value
-  );
-  cartelera.push(nuevaPelicula);
-  guardarLocalStorage();
-  cardPeliculaAgregada(nuevaPelicula);
-  limpiarForm();
+  if (validaciones()) {
+    const nuevaPelicula = new Pelicula(
+      inputTitulo.value,
+      inputDirector.value,
+      inputAnioEstreno.value,
+      inputPoster.value
+    );
+    cartelera.push(nuevaPelicula);
+    guardarLocalStorage();
+    cardPeliculaAgregada(nuevaPelicula);
+    limpiarForm();
 
-  Swal.fire({
-    title: "Pelicula agregada!",
-    text: `La pelicula ${nuevaPelicula.titulo}, fue agregada correctamente.`,
-    icon: "success",
-  });
+    Swal.fire({
+      title: "Pelicula agregada!",
+      text: `La pelicula ${nuevaPelicula.titulo}, fue agregada correctamente.`,
+      icon: "success",
+    });
+  }
 };
 
 const guardarLocalStorage = () => {
@@ -30,6 +32,10 @@ const guardarLocalStorage = () => {
 
 const limpiarForm = () => {
   formularioPelicula.reset();
+  const inputs = formularioPelicula.querySelectorAll(".form-control");
+  inputs.forEach((input) => {
+    input.classList.remove("is-valid", "is-invalid");
+  });
 };
 
 const cardPeliculaAgregada = (nuevaPelicula) => {
@@ -84,7 +90,6 @@ window.eliminarPelicula = (id) => {
 };
 
 window.prepararPelicula = (id) => {
-
   const peliculaBuscada = cartelera.find((pelicula) => pelicula.id === id);
 
   inputTitulo.value = peliculaBuscada.titulo;
@@ -105,28 +110,88 @@ const cargarDatosTabla = () => {
 };
 
 const editarPelicula = () => {
-  const posicionPelicula = cartelera.findIndex(
-    (pelicula) => pelicula.id === idPeliculaEditar
-  );
+  if (validaciones()) {
+    const posicionPelicula = cartelera.findIndex(
+      (pelicula) => pelicula.id === idPeliculaEditar
+    );
 
-  cartelera[posicionPelicula].titulo = inputTitulo.value;
-  cartelera[posicionPelicula].director = inputDirector.value;
-  cartelera[posicionPelicula].anioEstreno = inputAnioEstreno.value;
-  cartelera[posicionPelicula].poster = inputPoster.value;
+    cartelera[posicionPelicula].titulo = inputTitulo.value;
+    cartelera[posicionPelicula].director = inputDirector.value;
+    cartelera[posicionPelicula].anioEstreno = inputAnioEstreno.value;
+    cartelera[posicionPelicula].poster = inputPoster.value;
 
-  guardarLocalStorage();
-  limpiarForm();
-  modalContacto.hide();
+    guardarLocalStorage();
+    limpiarForm();
+    modalContacto.hide();
 
-  cardPeliculas.innerHTML = "";
-  cargarDatosTabla();
+    cardPeliculas.innerHTML = "";
+    cargarDatosTabla();
 
-  Swal.fire({
-    title: "Pelicula actualizada!",
-    text: `La pelicula ${cartelera[posicionPelicula].titulo}, fue actualizada correctamente.`,
-    icon: "success",
-  });
+    Swal.fire({
+      title: "Pelicula actualizada!",
+      text: `La pelicula ${cartelera[posicionPelicula].titulo}, fue actualizada correctamente.`,
+      icon: "success",
+    });
+  }
 };
+
+function validarCantidadCaracteres(input, min, max) {
+  if (input.value.trim().length >= min && input.value.trim().length <= max) {
+    input.classList.add("is-valid");
+    input.classList.remove("is-invalid");
+    return true;
+  } else {
+    input.classList.add("is-invalid");
+    input.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function validarAnioEstreno(input, min, max) {
+  if (parseInt(input.value) >= min && parseInt(input.value) <= max) {
+    input.classList.add("is-valid");
+    input.classList.remove("is-invalid");
+    return true;
+  } else {
+    input.classList.add("is-invalid");
+    input.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function validarPoster() {
+  const regExp = /^https?:\/\/.+\.(jpg|jpeg|png|gif)(\?.*)?$/i;
+  if (regExp.test(inputPoster.value)) {
+    inputPoster.classList.add("is-valid");
+    inputPoster.classList.remove("is-invalid");
+    return true;
+  } else {
+    inputPoster.classList.add("is-invalid");
+    inputPoster.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function validaciones() {
+  let datosValidos = true;
+  if (!validarCantidadCaracteres(inputTitulo, 2, 50)) {
+    datosValidos = false;
+  }
+
+  if (!validarCantidadCaracteres(inputDirector, 2, 50)) {
+    datosValidos = false;
+  }
+
+  if (!validarAnioEstreno(inputAnioEstreno, 1985, 2025)) {
+    datosValidos = false;
+  }
+
+  if (!validarPoster()) {
+    datosValidos = false;
+  }
+
+  return datosValidos;
+}
 
 const modalContacto = new bootstrap.Modal(
   document.querySelector("#modalContacto")

@@ -58,15 +58,11 @@
     <main class="container my-4">
       <div class="d-flex justify-content-between mb-5">
         <h1>Cartelera</h1>
-        <button
-          class="btn btn-success"
-          id="btnAgregar"
-        >
+        <button class="btn btn-success" id="btnAgregar">
           Agregar película
         </button>
       </div>
-      <section class="row justify-content-between row-gap-4">
-      </section>
+      <section class="row justify-content-between row-gap-4"></section>
     </main>
     <div
       class="modal fade"
@@ -97,11 +93,15 @@
                   class="form-control"
                   id="titulo"
                   aria-describedby="Ingresa título"
-                  minlength="1"
+                  minlength="2"
                   maxlength="50"
                   placeholder="Ej: Interestellar"
                   required
                 />
+                <div class="invalid-feedback">
+                  El titulo es obligatorio y debe contener entre 1 a 50
+                  caracteres
+                </div>
               </div>
               <div class="mb-3">
                 <label for="director" class="form-label">Director</label>
@@ -109,11 +109,15 @@
                   type="text"
                   class="form-control"
                   id="director"
-                  minlength="1"
+                  minlength="2"
                   maxlength="50"
                   placeholder="Ej: Christopher Nolan"
                   required
                 />
+                <div class="invalid-feedback">
+                  El director es obligatorio y debe contener entre 2 y 50
+                  caracteres
+                </div>
               </div>
               <div class="mb-3">
                 <label for="anioEstreno" class="form-label"
@@ -124,21 +128,28 @@
                   class="form-control"
                   id="anioEstreno"
                   placeholder="Ej: 2014"
-                  minlength="1"
-                  maxlength="4"
                   min="1895"
                   max="2025"
                   required
                 />
+                <div class="invalid-feedback">
+                  El año de estreno es obligatorio y debe pertenecer al período
+                  entre 1985 a 2025
+                </div>
               </div>
               <div class="mb-3">
-                <label for="poster" class="form-label">Poster (Recomendacion: www.movieposters.com)</label>
+                <label for="poster" class="form-label"
+                  >Poster (Recomendacion: www.movieposters.com)</label
+                >
                 <input
                   type="text"
                   class="form-control"
                   id="poster"
                   placeholder="Ej: https://www.movieposters.com/"
                 />
+                <div class="invalid-feedback">
+                  El poster es obligatorio y debe ser de formato jpg, gif, jpeg o png.
+                </div>
               </div>
               <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
@@ -146,7 +157,9 @@
         </div>
       </div>
     </div>
-    <footer class="bg-dark-subtle text-light text-center py-3"><p>&copy; Todos los derechos reservados</p></footer>
+    <footer class="bg-dark-subtle text-light text-center py-3">
+      <p>&copy; Todos los derechos reservados</p>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
