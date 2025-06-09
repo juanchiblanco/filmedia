@@ -17,11 +17,11 @@ card.innerHTML = `<div class="row g-0">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h2 class="card-title text-center">
+                  <h2 class="card-title text-center display-2">
                     ${peliculaBuscada.titulo}
                   </h2>
-                  <h4 class="text-center">${peliculaBuscada.director} (${peliculaBuscada.anioEstreno})</h4>
-                  <p class="text-center lead">${peliculaBuscada.descripcion}</p>
+                  <h5 class="text-center">${peliculaBuscada.director} (${peliculaBuscada.anioEstreno})</h5>
+                  <p class="text-center lead mt-5">${peliculaBuscada.descripcion}</p>
                 </div>
               </div>
             </div>`;

@@ -56,13 +56,15 @@
       </nav>
     </header>
     <main class="container my-4">
-      <div class="d-flex justify-content-between mb-5">
+      <div class="d-flex justify-content-between mb-5 mx-2">
         <h1>Cartelera</h1>
         <button class="btn btn-success" id="btnAgregar">
           Agregar película
         </button>
       </div>
-      <section class="row justify-content-between row-gap-4"></section>
+      <section class="container">
+        <article class="row justify-content-center row-gap-2 cardGrid"></article>
+      </section>
     </main>
     <div
       class="modal fade"
@@ -148,18 +150,21 @@
                   placeholder="Ej: https://www.movieposters.com/"
                 />
                 <div class="invalid-feedback">
-                  El poster es obligatorio y debe ser de formato jpg, gif, jpeg o png.
+                  El poster es obligatorio y debe ser de formato jpg, gif, jpeg
+                  o png.
                 </div>
               </div>
               <div class="mb-3">
                 <label for="director" class="form-label">Descripcion</label>
-                <textarea class="form-control"
+                <textarea
+                  class="form-control"
                   id="descripcion"
                   placeholder="Agrega la descripcion aqui"
-                  maxlength="250"></textarea>
+                  maxlength="250"
+                ></textarea>
                 <div class="invalid-feedback">
-                  El campo de la descripcion es obligatorio y debe contener un maximo de 250
-                  caracteres
+                  El campo de la descripcion es obligatorio y debe contener un
+                  maximo de 250 caracteres
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Enviar</button>

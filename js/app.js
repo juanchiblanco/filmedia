@@ -12,7 +12,7 @@ const agregarPelicula = () => {
       inputDirector.value,
       inputAnioEstreno.value,
       inputPoster.value,
-      inputDescripcion.value,
+      inputDescripcion.value
     );
     cartelera.push(nuevaPelicula);
     guardarLocalStorage();
@@ -40,8 +40,8 @@ const limpiarForm = () => {
 };
 
 const cardPeliculaAgregada = (nuevaPelicula) => {
-  cardPeliculas.innerHTML += `<article class="col-12 col-md-4 col-lg-3" id="cardPelicula">
-          <div class="card" style="width: 18rem">
+  cardPeliculas.innerHTML += `<article class="col-12 col-md-6 col-lg-4" id="cardPelicula">
+          <div class="card">
             <img src="${nuevaPelicula.poster}" class="card-img-top h-100" alt="${nuevaPelicula.titulo}, ${nuevaPelicula.director} (${nuevaPelicula.anioEstreno})" />
             <div class="card-body bg-dark-subtle">
               <h5 class="card-title">${nuevaPelicula.titulo}</h5>
@@ -69,7 +69,7 @@ window.eliminarPelicula = (id) => {
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Si, elimínalo!",
-    cancelButtonText: "Salir",
+    cancelButtonText: "Cancelar",
   }).then((result) => {
     if (result.isConfirmed) {
       const posicionPeliculaBuscada = cartelera.findIndex(
@@ -211,7 +211,7 @@ const inputPoster = document.querySelector("#poster");
 const inputDescripcion = document.querySelector("#descripcion");
 const cartelera = JSON.parse(localStorage.getItem("newCarteleraKey")) || [];
 const formularioPelicula = document.querySelector(".formPelicula");
-const cardPeliculas = document.querySelector(".row");
+const cardPeliculas = document.querySelector(".cardGrid");
 let creandoPelicula = true;
 let idPeliculaEditar = null;
 
