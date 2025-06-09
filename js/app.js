@@ -11,7 +11,8 @@ const agregarPelicula = () => {
       inputTitulo.value,
       inputDirector.value,
       inputAnioEstreno.value,
-      inputPoster.value
+      inputPoster.value,
+      inputDescripcion.value,
     );
     cartelera.push(nuevaPelicula);
     guardarLocalStorage();
@@ -96,6 +97,7 @@ window.prepararPelicula = (id) => {
   inputDirector.value = peliculaBuscada.director;
   inputAnioEstreno.value = peliculaBuscada.anioEstreno;
   inputPoster.value = peliculaBuscada.poster;
+  inputDescripcion.value = peliculaBuscada.descripcion;
 
   abrirModal();
 
@@ -119,6 +121,7 @@ const editarPelicula = () => {
     cartelera[posicionPelicula].director = inputDirector.value;
     cartelera[posicionPelicula].anioEstreno = inputAnioEstreno.value;
     cartelera[posicionPelicula].poster = inputPoster.value;
+    cartelera[posicionPelicula].descripcion = inputDescripcion.value;
 
     guardarLocalStorage();
     limpiarForm();
@@ -186,7 +189,7 @@ function validaciones() {
     datosValidos = false;
   }
 
-  if (!validarAnioEstreno(inputAnioEstreno, 1985, 2025)) {
+  if (!validarAnioEstreno(inputAnioEstreno, 1895, 2025)) {
     datosValidos = false;
   }
 
@@ -205,6 +208,7 @@ const inputTitulo = document.querySelector("#titulo");
 const inputDirector = document.querySelector("#director");
 const inputAnioEstreno = document.querySelector("#anioEstreno");
 const inputPoster = document.querySelector("#poster");
+const inputDescripcion = document.querySelector("#descripcion");
 const cartelera = JSON.parse(localStorage.getItem("newCarteleraKey")) || [];
 const formularioPelicula = document.querySelector(".formPelicula");
 const cardPeliculas = document.querySelector(".row");
