@@ -4,12 +4,14 @@ export default class Pelicula {
   #director;
   #anioEstreno;
   #poster;
-  constructor(titulo, director, anioEstreno, poster) {
+  #descripcion;
+  constructor(titulo, director, anioEstreno, poster, descripcion) {
     this.#id = crypto.randomUUID();
     this.#titulo = titulo;
     this.#director = director;
     this.#anioEstreno = anioEstreno;
     this.#poster = poster;
+    this.descripcion = descripcion;
   }
 
   get id() {
@@ -30,6 +32,9 @@ export default class Pelicula {
   get poster() {
     return this.#poster;
   }
+  get descripcion() {
+    return this.#descripcion;
+  }
 
   set titulo(nuevoTitulo) {
     this.#titulo = nuevoTitulo;
@@ -45,6 +50,9 @@ export default class Pelicula {
   set poster(nuevoPoster) {
     this.#poster = nuevoPoster;
   }
+  set descripcion(nuevoDescripcion) {
+    this.#descripcion = nuevoDescripcion;
+  }
 
   toJSON() {
     return {
@@ -53,6 +61,7 @@ export default class Pelicula {
       director: this.director,
       anioEstreno: this.anioEstreno,
       poster: this.poster,
+      descripcion: this.descripcion,
     };
   }
 }
