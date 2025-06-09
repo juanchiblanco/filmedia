@@ -6,10 +6,10 @@ Este proyecto es una **práctica de CRUD** centrada en las operaciones **Create*
 
 Desde la vista de un **administrador de cine**, se permite:
 
-- ➕ **Dar de alta películas** (Create)
-- 👁️ **Mostrar la cartelera actual** (Read)
-
-> En clases futuras se completará la funcionalidad con las operaciones **Delete** y **Update**.
+- **Dar de alta películas** (Create)
+- **Mostrar la cartelera actual** (Read)
+- **Actualizar la cartelera y editar las películas** (Update)
+- **Borrar las películas agregadas** (Delete)
 
 ---
 
@@ -18,7 +18,7 @@ Desde la vista de un **administrador de cine**, se permite:
 - **HTML5**
 - **CSS3**
 - **Bootstrap 5**
-- **JavaScript (vanilla)**
+- **JavaScript**
 
 ---
 
